@@ -1,7 +1,5 @@
 import React, { useRef } from 'react';
 
-//For avoiding uneccessary re-renders we use useRef
-
 function ScrollToSection() {
     const homeRef = useRef(null);
     const aboutRef = useRef(null);

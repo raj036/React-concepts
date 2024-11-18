@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import ScrollToSection from './TaskTwo';
 
-//We use useRef for not to re render
+//For avoiding uneccessary re-renders we use useRef
 
 function App() {
 

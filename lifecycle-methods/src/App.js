@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 
-function App() {
+const App = () => {
+  const [state, setState] = useState(0);
+  const [data, setData] = useState(null);
+  const ref = useRef(null);
+
+  // ComponentDidMount
+  useEffect(() => {
+    console.log('Component mounted');
+    setTimeout(() => setData('Fetched Data'), 1000);
+
+    // ComponentWillUnmount
+    return () => {
+      console.log('Component will unmount');
+    };
+  }, []);
+
+  // ComponentDidUpdate
+  useEffect(() => {
+    if (state !== 0) {
+      console.log(`State updated to: ${state}`);
+    }
+  }, [state]);
+
+  // ComponentWillMount 
+  useLayoutEffect(() => {
+    console.log('useLayoutEffect: DOM is ready');
+    if (ref.current) {
+      ref.current.style.color = 'blue';
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 ref={ref}>Lifecycle Methods</h1>
+      <p>State: {state}</p>
+      <p>Data: {data || 'Loading...'}</p>
+      <button onClick={() => setState(state + 1)}>Update State</button>
     </div>
   );
-}
+};
 
 export default App;

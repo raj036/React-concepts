@@ -77,7 +77,7 @@ const TaskTwo = () => {
 
 export default TaskTwo;
 
-//In this useCallback function returns the moimoized function
+//In this useCallback returns the moimoized function
 // We use useCallback hook if we have many functions in our react application then if we work on any one function then the react has a by default behaviour that it will render the whole components but if we dont want to render some of the functions then we use useCallback
 // and we can use dependencies in useCallback so when that particular function will get called at that time only that usecallback function will get re render 
 
